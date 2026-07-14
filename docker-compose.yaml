@@ -1,0 +1,14 @@
+services:
+  postgres:
+
+    image: postgres:16-alpine
+    container_name: ${DB_POSTGRES_CONTAINER}
+
+    ports:
+      - ${DB_POSTGRES_PORT}:5432
+    environment:
+      - POSTGRES_USER=${DB_POSTGRES_USER}
+      - POSTGRES_DB=${DB_POSTGRES_NAME}
+      - POSTGRES_PASSWORD=${DB_POSTGRES_PASSWORD}
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
