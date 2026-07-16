@@ -8,3 +8,10 @@ type PostgresParams struct {
 	Password string
 	Sslmode  string
 }
+
+type User struct {
+	Id           int64
+	Username     string
+	Email        string
+	HashPassword string
+}

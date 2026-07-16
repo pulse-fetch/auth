@@ -21,6 +21,7 @@ type PostgresConfig struct {
 }
 type Config struct {
 	Env         string         `yaml:"env"`
+	HmacSecret  string         `yaml:"hmac-secret"`
 	GrpcCfg     GrpcConfig     `yaml:"grpc-server"`
 	PostgresCfg PostgresConfig `yaml:"postgres"`
 }

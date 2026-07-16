@@ -25,7 +25,7 @@ func main() {
 		Password: cfg.PostgresCfg.Password,
 		Sslmode:  cfg.PostgresCfg.Sslmode,
 	}
-	application := app.New(log, cfg.GrpcCfg.Port, params)
+	application := app.New(log, cfg.GrpcCfg.Port, params, cfg.HmacSecret)
 	go func() {
 		application.GRPCServer.MustRun()
 	}()

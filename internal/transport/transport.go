@@ -6,7 +6,10 @@ import (
 )
 
 type Service interface {
-	Register(username, email, password string) (string, error)
+	Register(username, email, password string) error
+	Auth(username, pass string) (string, error)
+	Update(id int64, newName string) error
+	Del(id int64) error
 }
 
 type Auth struct {
