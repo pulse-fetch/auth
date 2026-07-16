@@ -6,7 +6,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.3
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/jackc/pgx v3.6.2+incompatible
-	github.com/pulse-fetch/protos v0.0.6
+	github.com/pulse-fetch/protos v0.0.9
 	google.golang.org/grpc v1.82.0
 )
 

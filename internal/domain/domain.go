@@ -15,3 +15,8 @@ type User struct {
 	Email        string
 	HashPassword string
 }
+
+type ResponseUser struct {
+	Username string `json:"username"`
+	Email    string `json:"email"`
+}

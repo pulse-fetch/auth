@@ -40,3 +40,10 @@ func (a *Auth) Delete(ctx context.Context, r *auth.DeleteRequest) (*auth.DeleteR
 	}
 	return &auth.DeleteResponse{Status: "OK"}, nil
 }
+func (a *Auth) Get(ctx context.Context, r *auth.GetRequest) (*auth.GetResponse, error) {
+	resp, err := a.service.Get(r.GetId())
+	if err != nil {
+		return &auth.GetResponse{}, status.Error(codes.Internal, "failed delete user")
+	}
+	return &auth.GetResponse{Username: resp.Username, Email: resp.Email}, nil
+}

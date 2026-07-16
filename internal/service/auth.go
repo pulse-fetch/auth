@@ -1,6 +1,7 @@
 package service
 
 import (
+	"auth/internal/domain"
 	hash "auth/pkg/hasher"
 	"fmt"
 	"log/slog"
@@ -38,6 +39,16 @@ func (s *Service) Update(id int64, newName string) error {
 
 }
 
+func (s *Service) Get(id int64) (domain.ResponseUser, error) {
+	var op = "service.auth.Get"
+	user, err := s.storage.Get(id, "id")
+	if err != nil {
+		s.log.Warn("Failed get user", slog.Any("error", err), slog.String("op", op))
+		return domain.ResponseUser{}, err
+	}
+	resp := domain.ResponseUser{Username: user.Username, Email: user.Email}
+	return resp, nil
+}
 func (s *Service) Auth(username, pass string) (string, error) {
 	var op = "service.Auth"
 	hashPass := hash.Hash(*s.hasher, pass)
@@ -72,45 +83,4 @@ func (s *Service) generateJwtToken(userID int64) (string, error) {
 		return "", fmt.Errorf("%s:%v", op, err)
 	}
 	return tokenString, nil
-}
-
-func (s *Service) ParseJwtToken(tokenString string) (int64, error) {
-	var op = "service.auth,ParseJwtToken"
-	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (any, error) {
-		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			s.log.Warn("suspicious request: invalid token signature algorithm", "actual_alg", token.Header["alg"])
-			return "", fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-		}
-		return []byte(s.hmacSecret), nil
-	})
-
-	if err != nil {
-
-		s.log.Warn("error parsing JWT token", "error", err)
-		return 0, err
-	}
-	if !token.Valid {
-		s.log.Warn("invalid JWT token")
-		return 0, fmt.Errorf("%s: invalid jwt token", op)
-	}
-
-	claims, ok := token.Claims.(jwt.MapClaims)
-	if !ok {
-		s.log.Warn("не удалось прочитать claims из JWT токена")
-		return 0, fmt.Errorf("%s: invalid claims", op)
-	}
-
-	subject, ok := claims["sub"].(string)
-	if !ok {
-		s.log.Warn("invalid sub in JWT token")
-		return 0, fmt.Errorf("%s: invalid sub", op)
-	}
-
-	id, err := strconv.Atoi(subject)
-	if err != nil {
-		slog.Warn("failed converting sub JWT in int64", "sub", subject)
-		return 0, fmt.Errorf("%s: invalid converting sub", op)
-	}
-
-	return int64(id), nil
 }

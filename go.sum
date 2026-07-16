@@ -49,6 +49,10 @@ github.com/pulse-fetch/protos v0.0.5 h1:FyFXonUf4X1NhUypXlM3qWayGcYgzJRkkPjRP6ut
 github.com/pulse-fetch/protos v0.0.5/go.mod h1:YHpgUzwwoFH4lrepiq6hTx0nuqqA/QP6Y5+KWB1I8S4=
 github.com/pulse-fetch/protos v0.0.6 h1:q5dMtGsI8frR3gn16Z5qIN+ABXfCHwQ+euiRQtIAlww=
 github.com/pulse-fetch/protos v0.0.6/go.mod h1:YHpgUzwwoFH4lrepiq6hTx0nuqqA/QP6Y5+KWB1I8S4=
+github.com/pulse-fetch/protos v0.0.8 h1:yop3LmN66n8IS6pur1mi/X75QrXmrYgXVk4K+2KQ4EA=
+github.com/pulse-fetch/protos v0.0.8/go.mod h1:YHpgUzwwoFH4lrepiq6hTx0nuqqA/QP6Y5+KWB1I8S4=
+github.com/pulse-fetch/protos v0.0.9 h1:WFxeqNLzipJHaZsx/45BEr6un3jvX7nIUH264UOklpU=
+github.com/pulse-fetch/protos v0.0.9/go.mod h1:YHpgUzwwoFH4lrepiq6hTx0nuqqA/QP6Y5+KWB1I8S4=
 github.com/shopspring/decimal v1.4.0 h1:bxl37RwXBklmTi0C79JfXCEBD1cqqHt0bbgBAGFp81k=
 github.com/shopspring/decimal v1.4.0/go.mod h1:gawqmDU56v4yIKSwfBSFip1HdCCXN8/+DMd9qYNcwME=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
